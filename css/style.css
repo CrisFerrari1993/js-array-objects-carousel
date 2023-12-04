@@ -1,19 +1,27 @@
-/**********************************
-    GENERAL PAGE RULES
-**********************************/
-*{
+/***********************
+    GENERAL
+************************/
+
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-:root{
+:root {
     font-family: 'DM Sans', sans-serif;
 }
 
-/**********************************
-    BODY PAGE RULES
-**********************************/
+img {
+    object-fit: cover;
+    object-position: right;
+    width: 100%;
+    height: 100%;
+}
+
+/***********************
+    STRUCTURE
+************************/
 
 #container {
     height: 100vh;
@@ -21,14 +29,13 @@
     justify-content: center;
     align-items: center;
     background-image: url(https:images4.alphacoders.com/130/1303457.jpg);
-    background-size: cover;
     background-position: center;
-    position: relative;
+    background-size: cover;
 }
 
 /* Carousel */
 #container #slide {
-    height: 350px;
+    height: 500px;
     width: 80%;
     max-width: 1000px;
     display: flex;
@@ -85,12 +92,12 @@
 
 #thumbnailContainer .thumbnail {
     height: 20%;
-    filter: opacity(.7);
+    filter:grayscale();
 }
 
 #thumbnailContainer .thumbnail.thumbActive {
     filter: opacity(1);
-    border: solid 2px #ffffff;
+    border: solid 6px #ffffff;
 }
 
 /***********************
@@ -118,3 +125,4 @@
 #buttonDown {
     bottom: 20px;
 }
+

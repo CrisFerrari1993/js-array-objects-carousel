@@ -1,10 +1,14 @@
-//     Milestone 1:
-// Ora rimuoviamo i contenuti statici e usiamo l’array di oggetti letterali per popolare dinamicamente il carosello.
-// Al click dell’utente sulle frecce verso sinistra o destra, l’immagine attiva diventerà visibile e dovremo aggiungervi titolo e testo.
-//     Milestone 2:
-// Aggiungere il ** ciclo infinito ** del carosello.Ovvero se la miniatura attiva è la prima e l’utente clicca la freccia verso destra, la miniatura che deve attivarsi sarà l’ultima e viceversa per l’ultima miniatura se l’utente clicca la freccia verso sinistra.
+/* Milestone 1:
+Ora rimuoviamo i contenuti statici e usiamo l’array di oggetti letterali per popolare dinamicamente il carosello.
+Al click dell’utente sulle frecce verso sopra e sotto, l’immagine attiva diventerà visibile e dovremo aggiungervi titolo e testo. */
 
-//creazione array oggetti img
+/* Milestone 2:
+Aggiungere il **ciclo infinito** del carosello.
+Ovvero se l’immagine attiva è la prima e l’utente clicca la freccia verso sopra, l’immagine che deve attivarsi sarà l’ultima e viceversa per l’ultima miniatura se l’utente clicca la freccia verso sotto. */
+
+// Milestone 1 + Milestone 2
+
+// Array degli oggetti immagine
 const images = [
     {
         image: 'img/01.webp',
@@ -28,27 +32,82 @@ const images = [
         text: 'Marvel\'s Avengers is an epic, third-person, action-adventure game that combines an original, cinematic story with single-player and co-operative gameplay.',
     }
 ];
-// definizione variabili agli oggetti nell'html
+
+// reference agli elementi in HTML
 const itemContainer = document.getElementById("itemContainer");
 const thumbnailContainer = document.getElementById("thumbnailContainer");
 const buttonDown = document.getElementById("buttonDown");
 const buttonUp = document.getElementById("buttonUp");
 
-// aggiunta delle immagini al dom
-images.forEach(Element =>
-    {
-        itemContainer.innerHTML += 
-            `<div class="item">
-                <img src="${element.image}" alt="image">
-                <div class="overImg">
-                    <div class="imgInfo imgTitle">${element.title}</div>
-                    <div class="imgInfo">${element.text}</div>
-                </div>
-            </div>`;
+// Aggiungo immagini al DOM in modo dinamico
+images.forEach(element => {
+    itemContainer.innerHTML +=
+        `<div class="item">
+            <img src="${element.image}" alt="image">
+            <div class="overImg">
+                <div class="imgInfo imgTitle">${element.title}</div>
+                <div class="imgInfo">${element.text}</div>
+            </div>
+        </div>`;
 
-        thumbnailContainer.innerHTML += 
-            `<div class="thumbnail">
-                <img src="${element.image}" alt="thumb image">
-            </div>`;
+    thumbnailContainer.innerHTML +=
+        `<div class="thumbnail">
+            <img src="${element.image}" alt="thumb image">
+        </div>`;
+}
+);
+
+// inserire classe active al div dell'immagine visibile
+let activePosition = 2;
+
+const itemContainerList = document.getElementsByClassName("item");
+const thumbnailsList = document.getElementsByClassName("thumbnail");
+
+itemContainerList[activePosition].classList.add("active");
+thumbnailsList[activePosition].classList.add("thumbActive");
+
+
+// attivare l'evento 'click' per il buttonDown
+buttonDown.addEventListener("click",
+
+    function buttonDownFunc() {
+        if (activePosition == images.length - 1) {
+            //reset activePosition
+            activePosition = 0;
+        } else {
+            //incrementare il valore di activePosition
+            activePosition++;
+        }
+
+        //rimuovere la classe active dall'item attuale
+        document.querySelector(".item.active").classList.remove("active");
+        document.querySelector(".thumbnail.thumbActive").classList.remove("thumbActive");
+
+        //assegnare la classe active all'item successivo
+        itemContainerList[activePosition].classList.add("active");
+        thumbnailsList[activePosition].classList.add("thumbActive");
     }
-    );
+);
+
+// attivare l'evento 'click' per il buttonUp
+buttonUp.addEventListener("click",
+
+    function buttonUpFunc() {
+        if (activePosition == 0) {
+            //reset activePosition
+            activePosition = images.length - 1;
+
+        } else {
+            //incrementare il valore di activePosition
+            activePosition--;
+        }
+
+        //rimuovere la classe active dall'item attuale
+        document.querySelector(".item.active").classList.remove("active");
+        document.querySelector(".thumbnail.thumbActive").classList.remove("thumbActive");
+
+        //assegnare la classe active all'item successivo
+        itemContainerList[activePosition].classList.add("active");
+        thumbnailsList[activePosition].classList.add("thumbActive");
+    }
+);
