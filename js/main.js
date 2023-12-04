@@ -33,3 +33,22 @@ const itemContainer = document.getElementById("itemContainer");
 const thumbnailContainer = document.getElementById("thumbnailContainer");
 const buttonDown = document.getElementById("buttonDown");
 const buttonUp = document.getElementById("buttonUp");
+
+// aggiunta delle immagini al dom
+images.forEach(Element =>
+    {
+        itemContainer.innerHTML += 
+            `<div class="item">
+                <img src="${element.image}" alt="image">
+                <div class="overImg">
+                    <div class="imgInfo imgTitle">${element.title}</div>
+                    <div class="imgInfo">${element.text}</div>
+                </div>
+            </div>`;
+
+        thumbnailContainer.innerHTML += 
+            `<div class="thumbnail">
+                <img src="${element.image}" alt="thumb image">
+            </div>`;
+    }
+    );
