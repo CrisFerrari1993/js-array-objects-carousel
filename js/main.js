@@ -28,3 +28,8 @@ const images = [
         text: 'Marvel\'s Avengers is an epic, third-person, action-adventure game that combines an original, cinematic story with single-player and co-operative gameplay.',
     }
 ];
+// definizione variabili agli oggetti nell'html
+const itemContainer = document.getElementById("itemContainer");
+const thumbnailContainer = document.getElementById("thumbnailContainer");
+const buttonDown = document.getElementById("buttonDown");
+const buttonUp = document.getElementById("buttonUp");
