@@ -14,15 +14,7 @@
 /**********************************
     BODY PAGE RULES
 **********************************/
-/* WRAPPER */
-    .wrapper{
-        height: 100vh;
-        width: 100%;
-        background-image: url(https:images4.alphacoders.com/130/1303457.jpg);
-        background-size: cover;
-        background-position: center;
-        position: relative;
-    }
+
 #container {
     height: 100vh;
     display: flex;
@@ -30,8 +22,8 @@
     align-items: center;
     background-image: url(https:images4.alphacoders.com/130/1303457.jpg);
     background-size: cover;
-        background-position: center;
-        position: relative;
+    background-position: center;
+    position: relative;
 }
 
 /* Carousel */
